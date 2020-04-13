@@ -70,6 +70,15 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["cqcbank/controllers:RequestController"] = append(beego.GlobalControllerRouter["cqcbank/controllers:RequestController"],
+        beego.ControllerComments{
+            Method: "Get",
+            Router: `/:fileName`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["cqcbank/controllers:UserController"] = append(beego.GlobalControllerRouter["cqcbank/controllers:UserController"],
         beego.ControllerComments{
             Method: "Post",
