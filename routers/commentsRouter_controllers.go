@@ -7,6 +7,15 @@ import (
 
 func init() {
 
+    beego.GlobalControllerRouter["cqcbank/controllers:CommandController"] = append(beego.GlobalControllerRouter["cqcbank/controllers:CommandController"],
+        beego.ControllerComments{
+            Method: "Get",
+            Router: `/`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["cqcbank/controllers:DemoController"] = append(beego.GlobalControllerRouter["cqcbank/controllers:DemoController"],
         beego.ControllerComments{
             Method: "Get",

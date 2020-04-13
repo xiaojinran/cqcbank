@@ -30,6 +30,11 @@ func init() {
 				&controllers.DemoController{},
 			),
 		),
+		beego.NSNamespace("/commands",
+			beego.NSInclude(
+				&controllers.CommandController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }

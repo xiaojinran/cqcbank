@@ -23,3 +23,5 @@ func (o *DemoController) Get() {
 	o.Data["json"] = obs
 	o.ServeJSON()
 }
+
+
