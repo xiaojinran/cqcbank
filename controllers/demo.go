@@ -14,7 +14,7 @@ type DemoController struct {
 // @router / [get]
 func (o *DemoController) Get() {
 	obs := []*models.Demo{
-		models.NewDemo("设备1",14),
+		models.NewDemo("设备1",21),
 		models.NewDemo("设备2",18),
 		models.NewDemo("设备3",19),
 	}
