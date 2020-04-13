@@ -1,9 +1,9 @@
 package controllers
 
 import (
+	"cqcbank/models"
 	"fmt"
 	"github.com/astaxie/beego"
-	"os/exec"
 )
 
 type CommandController struct {
@@ -11,23 +11,21 @@ type CommandController struct {
 }
 
 
-// @Title Commands
-// @Description Commands
-// @Success 200
-// @router / [get]
+// @Title Get
+// @Description Execute scripts by Name
+// @Param	scriptsName		path 	string	true		"the script you want to run"
+// @Success 200 {object} models.Object
+// @Failure 403 :objectId is empty
+// @router /:scriptsName [get]
 func (c *CommandController)Get(){
-	
-	cmd := exec.Command(addPrefix("demo.bat"))
-	out,err := cmd.CombinedOutput()
-	fmt.Println(err)
-	if err != nil {
-	//	log.Fatal(err)
-	}
-	fmt.Println(string(out))
-	c.Data["json"] = string(out)
+	scriptsName := c.Ctx.Input.Param(":scriptsName")
+	fmt.Println(scriptsName)
+	cr := models.ExeSysCommand(scriptsName)
+	c.Data["json"] = cr
 	c.ServeJSON()
 }
 
-func addPrefix(c string) string{
-	return "scripts\\" + c
-}
+
+
+
+
