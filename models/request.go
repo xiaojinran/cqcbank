@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/config"
 	"github.com/astaxie/beego/httplib"
+	"strings"
 )
 
 type RequestController struct {
@@ -36,7 +37,7 @@ func RequestServer(name string) *RequestResult{
 	
 	return  &RequestResult{
 		Error:"no errors",
-		Result: str,
+		Result: strings.Replace(str, "\n", "", -1),
 	}
 }
 

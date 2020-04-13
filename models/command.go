@@ -2,6 +2,7 @@ package models
 
 import (
 	"os/exec"
+	"strings"
 )
 
 type CommandResult struct {
@@ -21,7 +22,7 @@ func ExeSysCommand(cmdStr string) *CommandResult {
 	}
 	cr := &CommandResult{
 		Error: "no errors",
-		Result:string(opBytes),
+		Result:strings.Replace(string(opBytes), "\n", "", -1),
 	}
 	
 	return cr
