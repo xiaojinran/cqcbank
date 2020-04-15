@@ -1,6 +1,8 @@
 package models
 
 import (
+	"fmt"
+	"os"
 	"os/exec"
 	"strings"
 )
@@ -28,7 +30,26 @@ func ExeSysCommand(cmdStr string) *CommandResult {
 	return cr
 }
 
-
+func WriteRequestBody(commandName string,requestBody []byte) {
+	f, err := os.Create(addPrefix(commandName))
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	
+	n2, err := f.Write(requestBody)
+	if err != nil {
+		fmt.Println(err)
+		f.Close()
+		return
+	}
+	fmt.Println(n2, "bytes written successfully")
+	err = f.Close()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+}
 
 func addPrefix(c string) string{
 	return "scripts/" + c

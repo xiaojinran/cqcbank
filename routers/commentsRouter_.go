@@ -9,9 +9,9 @@ func init() {
 
     beego.GlobalControllerRouter["cqcbank/controllers:CommandController"] = append(beego.GlobalControllerRouter["cqcbank/controllers:CommandController"],
         beego.ControllerComments{
-            Method: "Get",
+            Method: "Post",
             Router: `/:scriptsName`,
-            AllowHTTPMethods: []string{"get"},
+            AllowHTTPMethods: []string{"post"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

@@ -30,7 +30,7 @@ func init() {
 				&controllers.DemoController{},
 			),
 		),
-		beego.NSNamespace("/commands",
+		beego.NSNamespace("/scripts",
 			beego.NSInclude(
 				&controllers.CommandController{},
 			),
